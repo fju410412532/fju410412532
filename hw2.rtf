@@ -1,0 +1,495 @@
+{\rtf1\ansi\ansicpg950\cocoartf2706
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Bold;\f1\fnil\fcharset0 Menlo-Regular;\f2\fnil\fcharset0 AppleSymbols;
+\f3\fnil\fcharset136 PingFangTC-Regular;}
+{\colortbl;\red255\green255\blue255;\red57\green192\blue38;\red0\green0\blue0;\red86\green32\blue244;
+\red125\green125\blue125;\red55\green239\blue32;\red235\green239\blue24;\red56\green185\blue199;}
+{\*\expandedcolortbl;;\cssrgb\c25706\c77963\c19557;\csgray\c0;\cssrgb\c41681\c25958\c96648;
+\cspthree\c56352\c56352\c56352;\cssrgb\c22319\c93015\c16433;\cssrgb\c93803\c93590\c10850;\cssrgb\c25546\c77007\c82023;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b\fs22 \cf2 \CocoaLigature0 julia> 
+\f1\b0 \cf3 using HTTP, CSV, DataFrames\
+\cf2  \uc0\u9474  \cf3 Packages [HTTP, CSV, DataFrames] not found, but packages named [HTTP, CSV,\
+\cf2  \uc0\u9474  \cf3 DataFrames] are available from a registry. \
+\cf2  \uc0\u9474  \cf3 Install packages?\
+\cf2  \uc0\u9474    \cf4 (@v1.8) pkg> \cf3 add HTTP CSV DataFrames \
+\cf2  \uc0\u9492  \cf3 (y/n/o) [y]: y\
+
+\f0\b \cf2     Updating
+\f1\b0 \cf3  registry at `~/.julia/registries/General.toml`\
+
+\f0\b \cf2    Resolving
+\f1\b0 \cf3  package versions...\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  InlineStrings \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v1.3.2\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  HTTP \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v1.6.2\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  WorkerUtilities \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v1.6.1\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  InvertedIndices \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v1.2.0\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  WeakRefStrings \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v1.4.2\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  SentinelArrays \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v1.3.16\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  TableTraits \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v1.0.1\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  DataValueInterfaces \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v1.0.0\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  Crayons \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v4.1.1\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  PooledArrays \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v1.4.2\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  DataFrames \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v1.4.4\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  CSV \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v0.10.8\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  Glib_jll \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v2.74.0+2\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  Libiconv_jll \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v1.16.1+2\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  IteratorInterfaceExtensions \uc0\u9472  v1.0.0\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  FilePathsBase \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v0.9.20\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  Tables \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v1.10.0\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  StringManipulation \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v0.3.0\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  PrettyTables \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v2.2.2\
+
+\f0\b \cf2   Downloaded
+\f1\b0 \cf3  artifact: Libiconv\
+
+\f0\b \cf2   Downloaded
+\f1\b0 \cf3  artifact: Glib\
+
+\f0\b \cf2     Updating
+\f1\b0 \cf3  `~/.julia/environments/v1.8/Project.toml`\
+ \cf5  [336ed68f] \cf6 + CSV v0.10.8\cf3 \
+ \cf5  [a93c6f00] \cf6 + DataFrames v1.4.4\cf3 \
+ \cf5  [cd3eb016] \cf6 + HTTP v1.6.2\cf3 \
+
+\f0\b \cf2     Updating
+\f1\b0 \cf3  `~/.julia/environments/v1.8/Manifest.toml`\
+ \cf5  [336ed68f] \cf6 + CSV v0.10.8\cf3 \
+ \cf5  [a8cc5b0e] \cf6 + Crayons v4.1.1\cf3 \
+ \cf5  [a93c6f00] \cf6 + DataFrames v1.4.4\cf3 \
+ \cf5  [e2d170a0] \cf6 + DataValueInterfaces v1.0.0\cf3 \
+ \cf5  [48062228] \cf6 + FilePathsBase v0.9.20\cf3 \
+ \cf5  [cd3eb016] \cf7 \uc0\u8593  HTTP v1.5.5 \u8658  v1.6.2\cf3 \
+ \cf5  [842dd82b] \cf6 + InlineStrings v1.3.2\cf3 \
+ \cf5  [41ab1584] \cf6 + InvertedIndices v1.2.0\cf3 \
+ \cf5  [82899510] \cf6 + IteratorInterfaceExtensions v1.0.0\cf3 \
+ \cf5  [2dfb63ee] \cf6 + PooledArrays v1.4.2\cf3 \
+ \cf5  [08abe8d2] \cf6 + PrettyTables v2.2.2\cf3 \
+ \cf5  [91c51154] \cf6 + SentinelArrays v1.3.16\cf3 \
+ \cf5  [892a3eda] \cf6 + StringManipulation v0.3.0\cf3 \
+ \cf5  [3783bdb8] \cf6 + TableTraits v1.0.1\cf3 \
+ \cf5  [bd369af6] \cf6 + Tables v1.10.0\cf3 \
+ \cf5  [ea10d353] \cf6 + WeakRefStrings v1.4.2\cf3 \
+ \cf5  [76eceee3] \cf6 + WorkerUtilities v1.6.1\cf3 \
+ \cf5  [7746bdde] \cf7 \uc0\u8593  Glib_jll v2.74.0+1 \u8658  v2.74.0+2\cf3 \
+ \cf5  [94ce4f54] \cf7 \uc0\u8593  Libiconv_jll v1.16.1+1 \u8658  v1.16.1+2\cf3 \
+ \cf5  [9fa8497b] \cf6 + Future\cf3 \
+
+\f0\b \cf2 Precompiling
+\f1\b0 \cf3  project...\
+  52 dependencies successfully precompiled in 28 seconds. 105 already precompiled.\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 data_url = "https://raw.githubusercontent.com/chu155447/futures-and-options/main/data.csv"\
+"https://raw.githubusercontent.com/chu155447/futures-and-options/main/data.csv"\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 my_file = CSV.File(HTTP.get(data_url).body)\
+31-element CSV.File:\
+ CSV.Row: (Day = 0, Spot = 80.0, Futures = 81.0)\
+ CSV.Row: (Day = 1, Spot = 79.635, Futures = 80.869)\
+ CSV.Row: (Day = 2, Spot = 77.88, Futures = 79.092)\
+ CSV.Row: (Day = 3, Spot = 76.4, Futures = 77.716)\
+ CSV.Row: (Day = 4, Spot = 75.567, Futures = 77.074)\
+ CSV.Row: (Day = 5, Spot = 77.287, Futures = 78.841)\
+ CSV.Row: (Day = 6, Spot = 77.599, Futures = 79.315)\
+ CSV.Row: (Day = 7, Spot = 78.147, Futures = 80.067)\
+ CSV.Row: (Day = 8, Spot = 77.041, Futures = 79.216)\
+ CSV.Row: (Day = 9, Spot = 76.853, Futures = 79.204)\
+ 
+\f2 \uc0\u8942 
+\f1 \
+ CSV.Row: (Day = 22, Spot = 78.031, Futures = 82.58)\
+ CSV.Row: (Day = 23, Spot = 79.185, Futures = 84.03)\
+ CSV.Row: (Day = 24, Spot = 77.524, Futures = 82.337)\
+ CSV.Row: (Day = 25, Spot = 76.982, Futures = 82.045)\
+ CSV.Row: (Day = 26, Spot = 76.216, Futures = 81.252)\
+ CSV.Row: (Day = 27, Spot = 76.764, Futures = 81.882)\
+ CSV.Row: (Day = 28, Spot = 79.293, Futures = 84.623)\
+ CSV.Row: (Day = 29, Spot = 78.861, Futures = 84.205)\
+ CSV.Row: (Day = 30, Spot = 76.192, Futures = 81.429)\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 df = DataFrame(my_file)\
+
+\f0\b 31\'d73 DataFrame
+\f1\b0 \
+
+\f0\b  Row 
+\f1\b0 \uc0\u9474 
+\f0\b  Day    Spot     Futures 
+\f1\b0 \
+     \uc0\u9474 \cf5  Int64  Float64  Float64 \cf3 \
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9532 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+   1 \uc0\u9474      0   80.0     81.0\
+   2 \uc0\u9474      1   79.635   80.869\
+   3 \uc0\u9474      2   77.88    79.092\
+   4 \uc0\u9474      3   76.4     77.716\
+   5 \uc0\u9474      4   75.567   77.074\
+   6 \uc0\u9474      5   77.287   78.841\
+   7 \uc0\u9474      6   77.599   79.315\
+   8 \uc0\u9474      7   78.147   80.067\
+  
+\f2 \uc0\u8942 
+\f1   \uc0\u9474    
+\f2 \uc0\u8942 
+\f1        
+\f2 \uc0\u8942 
+\f1         
+\f2 \uc0\u8942 
+\f1 \
+  25 \uc0\u9474     24   77.524   82.337\
+  26 \uc0\u9474     25   76.982   82.045\
+  27 \uc0\u9474     26   76.216   81.252\
+  28 \uc0\u9474     27   76.764   81.882\
+  29 \uc0\u9474     28   79.293   84.623\
+  30 \uc0\u9474     29   78.861   84.205\
+  31 \uc0\u9474     30   76.192   81.429\
+\cf8                 16 rows omitted\cf3 \
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 #
+\f3 \'bd\'54\'bb\'7b
+\f1 my_file
+\f3 \'c3\'fe\'a7\'4f
+\f1 \
+       #typeof(my_file) \
+       #typeof(df) \
+       \'a0\
+       #
+\f3 \'ad\'70\'ba\'e2\'b4\'fa\'ad\'c8\'ad\'d3\'bc\'c6
+\f1 \
+       n_day = nrow(df)\
+31\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 #
+\f3 \'c5\'dc\'bc\'c6\'ae\'74\'a4\'c0
+\f1 \
+       delta_S = df[2:n_day,2] - df[1:n_day-1,2]\
+30-element Vector\{Float64\}:\
+ -0.3649999999999949\
+ -1.7550000000000097\
+ -1.4799999999999898\
+ -0.8330000000000126\
+  1.720000000000013\
+  0.3119999999999976\
+  0.5480000000000018\
+ -1.1060000000000088\
+ -0.1880000000000024\
+  0.1810000000000116\
+  
+\f2 \uc0\u8942 
+\f1 \
+  1.1960000000000122\
+  1.1539999999999964\
+ -1.6610000000000014\
+ -0.5420000000000016\
+ -0.7660000000000053\
+  0.5480000000000018\
+  2.5290000000000106\
+ -0.43200000000000216\
+ -2.669000000000011\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 delta_F = df[2:n_day,3] - df[1:n_day-1,3]\
+30-element Vector\{Float64\}:\
+ -0.13100000000000023\
+ -1.777000000000001\
+ -1.3760000000000048\
+ -0.6419999999999959\
+  1.766999999999996\
+  0.47400000000000375\
+  0.7519999999999953\
+ -0.8509999999999991\
+ -0.012000000000000455\
+  0.4340000000000117\
+  
+\f2 \uc0\u8942 
+\f1 \
+  1.2999999999999972\
+  1.4500000000000028\
+ -1.6929999999999978\
+ -0.2920000000000016\
+ -0.7930000000000064\
+  0.6300000000000097\
+  2.7409999999999997\
+ -0.41800000000000637\
+ -2.7759999999999962\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 #
+\f3 \'ad\'70\'ba\'e2\'b1\'d4\'ad\'7a\'b2\'ce\'ad\'70\'b6\'71
+\f1 \
+       using Statistics\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 #
+\f3 \'a5\'c0\'c5\'e9\'bc\'d0\'b7\'c7\'ae\'74\'bb\'50
+\f1 rho, hedge ratio\
+       std_ds1 = std(delta_S, corrected = false)\
+1.1299790243874281\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 std_df1 = std(delta_F, corrected = false)\
+1.1895807706919268\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 cov1 = cov(delta_S, delta_F, corrected = false)\
+1.3401010800000035\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 rho1 = cov1 / std_ds1 / std_df1\
+0.9969496840692875\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 h1 = rho1 * std_ds1 / std_df1\
+0.9469993623995064\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 #
+\f3 \'bc\'cb\'a5\'bb\'bc\'d0\'b7\'c7\'ae\'74\'bb\'50
+\f1 rho, hedge ratio\
+       std_ds2 = std(delta_S)\
+1.149296304441247\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 std_df2 = std(delta_F)\
+1.2099169578229676\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 cov2 = cov(delta_S, delta_F)\
+1.3863114620689692\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 rho2 = cov2 / std_ds2 / std_df2\
+0.9969496840692875\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 h2 = rho2 * std_ds2 / std_df2\
+0.9469993623995063\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 #
+\f3 \'a7\'51\'a5\'ce\'b0\'6a\'c2\'6b\'ad\'70\'ba\'e2
+\f1 hedge ratio\
+       using GLM\
+\cf2  \uc0\u9474  \cf3 Package GLM not found, but a package named GLM is available from a registry. \
+\cf2  \uc0\u9474  \cf3 Install package?\
+\cf2  \uc0\u9474    \cf4 (@v1.8) pkg> \cf3 add GLM \
+\cf2  \uc0\u9492  \cf3 (y/n/o) [y]: y\
+
+\f0\b \cf2    Resolving
+\f1\b0 \cf3  package versions...\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  Calculus \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v0.5.1\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  DualNumbers \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v0.6.8\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  StatsModels \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v0.6.33\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  Rmath_jll \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v0.3.0+0\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  HypergeometricFunctions \uc0\u9472  v0.3.11\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  PDMats \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v0.11.16\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  StatsFuns \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v1.1.1\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  GLM \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v1.8.1\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  Rmath \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v0.7.0\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  FillArrays \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v0.13.6\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  QuadGK \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v2.6.0\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  ShiftedArrays \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v2.0.0\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  DensityInterface \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v0.4.0\
+
+\f0\b \cf2    Installed
+\f1\b0 \cf3  Distributions \uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472  v0.25.79\
+
+\f0\b \cf2   Downloaded
+\f1\b0 \cf3  artifact: Rmath\
+
+\f0\b \cf2     Updating
+\f1\b0 \cf3  `~/.julia/environments/v1.8/Project.toml`\
+ \cf5  [38e38edf] \cf6 + GLM v1.8.1\cf3 \
+
+\f0\b \cf2     Updating
+\f1\b0 \cf3  `~/.julia/environments/v1.8/Manifest.toml`\
+ \cf5  [49dc2e85] \cf6 + Calculus v0.5.1\cf3 \
+ \cf5  [b429d917] \cf6 + DensityInterface v0.4.0\cf3 \
+ \cf5  [31c24e10] \cf6 + Distributions v0.25.79\cf3 \
+ \cf5  [fa6b7ba4] \cf6 + DualNumbers v0.6.8\cf3 \
+ \cf5  [1a297f60] \cf6 + FillArrays v0.13.6\cf3 \
+ \cf5  [38e38edf] \cf6 + GLM v1.8.1\cf3 \
+ \cf5  [34004b35] \cf6 + HypergeometricFunctions v0.3.11\cf3 \
+ \cf5  [90014a1f] \cf6 + PDMats v0.11.16\cf3 \
+ \cf5  [1fd47b50] \cf6 + QuadGK v2.6.0\cf3 \
+ \cf5  [79098fc4] \cf6 + Rmath v0.7.0\cf3 \
+ \cf5  [1277b4bf] \cf6 + ShiftedArrays v2.0.0\cf3 \
+ \cf5  [4c63d2b9] \cf6 + StatsFuns v1.1.1\cf3 \
+ \cf5  [3eaba693] \cf6 + StatsModels v0.6.33\cf3 \
+ \cf5  [f50d1b31] \cf6 + Rmath_jll v0.3.0+0\cf3 \
+ \cf5  [4607b0f0] \cf6 + SuiteSparse\cf3 \
+
+\f0\b \cf2 Precompiling
+\f1\b0 \cf3  project...\
+  14 dependencies successfully precompiled in 6 seconds. 157 already precompiled.\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 mat = hcat(delta_S,delta_F)\
+30\'d72 Matrix\{Float64\}:\
+ -0.365  -0.131\
+ -1.755  -1.777\
+ -1.48   -1.376\
+ -0.833  -0.642\
+  1.72    1.767\
+  0.312   0.474\
+  0.548   0.752\
+ -1.106  -0.851\
+ -0.188  -0.012\
+  0.181   0.434\
+  
+\f2 \uc0\u8942 
+\f1       \
+  1.196   1.3\
+  1.154   1.45\
+ -1.661  -1.693\
+ -0.542  -0.292\
+ -0.766  -0.793\
+  0.548   0.63\
+  2.529   2.741\
+ -0.432  -0.418\
+ -2.669  -2.776\
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 data = DataFrame(delta_S = mat[:,1],delta_F = mat[:,2])\
+
+\f0\b 30\'d72 DataFrame
+\f1\b0 \
+
+\f0\b  Row 
+\f1\b0 \uc0\u9474 
+\f0\b  delta_S  delta_F 
+\f1\b0 \
+     \uc0\u9474 \cf5  Float64  Float64 \cf3 \
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9532 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+   1 \uc0\u9474   -0.365   -0.131\
+   2 \uc0\u9474   -1.755   -1.777\
+   3 \uc0\u9474   -1.48    -1.376\
+   4 \uc0\u9474   -0.833   -0.642\
+   5 \uc0\u9474    1.72     1.767\
+   6 \uc0\u9474    0.312    0.474\
+   7 \uc0\u9474    0.548    0.752\
+   8 \uc0\u9474   -1.106   -0.851\
+  
+\f2 \uc0\u8942 
+\f1   \uc0\u9474     
+\f2 \uc0\u8942 
+\f1         
+\f2 \uc0\u8942 
+\f1 \
+  24 \uc0\u9474   -1.661   -1.693\
+  25 \uc0\u9474   -0.542   -0.292\
+  26 \uc0\u9474   -0.766   -0.793\
+  27 \uc0\u9474    0.548    0.63\
+  28 \uc0\u9474    2.529    2.741\
+  29 \uc0\u9474   -0.432   -0.418\
+  30 \uc0\u9474   -2.669   -2.776\
+\cf8          15 rows omitted\cf3 \
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 ols = lm(@formula(delta_S ~ delta_F), data)\
+StatsModels.TableRegressionModel\{LinearModel\{GLM.LmResp\{Vector\{Float64\}\}, GLM.DensePredChol\{Float64, LinearAlgebra.CholeskyPivoted\{Float64, Matrix\{Float64\}, Vector\{Int64\}\}\}\}, Matrix\{Float64\}\}\
+\
+delta_S ~ 1 + delta_F\
+\
+Coefficients:\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+                 Coef.  Std. Error      t  Pr(>|t|)  Lower 95%  Upper 95%\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+(Intercept)  -0.140475   0.0166678  -8.43    <1e-08  -0.174618  -0.106333\
+delta_F       0.946999   0.0140105  67.59    <1e-31   0.9183     0.975699\
+\uc0\u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \u9472 \
+\
+
+\f0\b \cf2 julia> 
+\f1\b0 \cf3 \
+}
